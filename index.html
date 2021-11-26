@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/vue_3.2.19.js"></script>
+    <!-- 外掛插件 -->
+    <script src="js/router.js"></script>
+    <script src="js/marquee.js"></script>
+    <script src="js/swipeslider.js"></script>
+    <!-- 自定義 -->
+    <link rel="stylesheet" href="css/all.css">
+    <script src="js/pageData.js"></script>
+    <title>OWIN</title>
+</head>
+
+<body>
+    <div id="indexBox" class="indexBox">
+        <!-- ==== header start ==== -->
+        <div class="header">
+            <div class="hd_top">
+                <div class="inner">
+                    <div class="helpLink">幫助中心</div>
+
+                    <!-- 跑馬燈 -->
+                    <div class="marquee">
+                        <div class="icon">
+                            <img src="images/icon/horn.svg">
+                        </div>
+                        <ul id="marquee" class="marquee_body">
+                            <template v-for="(item,index) in marquee">
+                                <li>{{item}}</li>
+                            </template>
+                        </ul>
+                    </div>
+
+                    <div class="hd_login">
+                        <div class="btn_s01 btn" @click="openUserLog(),chSelBar = true">註冊</div>
+                        <div class="btn_s01 btn" @click="openUserLog(),chSelBar = false">登陸</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hd_bottom">
+                <div class="inner">
+                    <div class="logo">
+                        <img src="images/icon/logo_b.svg">
+                    </div>
+                    <div class="hd_nav">
+                        <div class="hd_menu">
+                            <ul>
+                                <template v-for="(item,index) in menu">
+                                    <li v-if="item.switch" @mouseleave = "item.page = 0">
+                                        <div class="nav_title">{{item.main}}</div>
+                                        <div class="nav_sub">
+                                            <div class="nav_inner">
+                                                <div class="nav_head">
+                                                    <div class="type">{{item.type}}</div>
+                                                    <div class="title">{{item.title}}</div>   
+                                                    <div class="num">{{item.num}}</div>
+                                                    <div class="suggest">{{item.suggest}}</div>
+                                                </div>
+                                                <div class="nav_game">
+                                                    <div class="nav_btn left"
+                                                    @click="backNav(item)"
+                                                    v-if="item.list.length > 4"></div>
+                                                    <div class="nav_list">
+                                                        <ul>
+                                                            <template v-for="(i,index) in item.list">
+                                                                <li data-maintain="遊戲維護中"
+                                                                    :style="moveNav(item.
+                                                                    page)"
+                                                                    :class="{'maintain':i.maintain}">
+                                                                    <div class="avatar">
+                                                                        <img :src="i.avatar">
+                                                                    </div>
+                                                                    <div class="title">{{i.title}}</div>
+                                                                </li>
+                                                            </template>
+                            </ul>
+                        </div>
+                        <div class="nav_btn right" @click="nextNav(item)" v-if="item.list.length > 4"></div>
+                    </div>
+                    <div class="nav_download">
+                        <div class="qrCode">
+                            <img src="images/icon/qrCode.png">
+                        </div>
+                        <div class="txt">
+                            <div class="qr_title">下載樂動體育</div>
+                            <p>安全買球專業快捷</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </li>
+            </template>
+            </ul>
+        </div>
+        <div class="hd_tool">
+            <ul>
+                <li><a href="#">優惠活動</a></li>
+                <li><a href="#">VIP福利</a></li>
+                <li><a href="#">APP下載</a></li>
+                <li><a href="#">合營計畫</a></li>
+                <li><a href="#">樂動贊助</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- ==== content start ==== -->
+    <div class="content" id="content">
+    </div>
+
+    <!-- ==== footer start ==== -->
+    <div class="footer">
+        <div class="ft_media">
+            <div class="inner">
+                <div class="title">樂動體育官方媒體</div>
+                <div class="list">
+                    <ul>
+                        <template v-for="(item,index) in media">
+                                        <li>
+                                            <img :src="item.offIcon">
+                                            <div class="light">
+                                                <img :src="item.onIcon">
+                                            </div>
+                                        </li>
+                                    </template>
+                    </ul>
+                </div>
+                <div class="btn_s02 btn">官方媒體清單</div>
+            </div>
+        </div>
+        <div class="ft_wrapper">
+            <div class="inner">
+                <ul>
+                    <template v-for="(item,index) in wrapper">
+                                    <li>
+                                        <div class="icon">
+                                            <img :src="item.offIcon">
+                                            <div class="light">
+                                                <img :src="item.onIcon">
+                                            </div>
+                                        </div>
+                                        <p>{{item.title}}</p>
+                                    </li>
+                                </template>
+                </ul>
+            </div>
+        </div>
+        <div class="ft_menu">
+            <ul>
+                <template v-for="(item,index) in ft_menu">
+                                <li>{{item}}</li>
+                            </template>
+            </ul>
+        </div>
+        <div class="ft_tip">
+            <p>Copyright © 2018-2021 樂動體育集團版權所有</p>
+        </div>
+    </div>
+
+    <!-- ==== sideBar start ==== -->
+    <div class="sideBar">
+        <ul>
+            <li>
+                <a>
+                    <div class="icon service"></div>
+                </a>
+            </li>
+            <template v-if="sideBar == true">
+                <li>
+                    <a>
+                        <div class="icon wallet"></div>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <div class="icon sportApp"></div>
+                    </a>
+                </li>
+                <li @click="goTop()">
+                    <div class="icon goTop"></div>
+                </li>
+                <li>
+                    <div class="icon close" @click="sideBar = false"></div>
+                </li>
+            </template>
+            <li v-if="sideBar == false" @click="sideBar = true">
+                <div class="icon menuBar"></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ==== dialogBox start (彈窗) ==== -->
+    <div class="dialogBox" v-if="dialog.main">
+        <!-- ==== dialog_useMbr start (登陸 / 註冊) ==== -->
+        <div class="dialog_useMbr" v-if="dialog.user">
+            <video src="video/loginbg.mp4" autoplay loop muted="muted"></video>
+            <div class="close" @click="colseDialog()"></div>
+
+            <div class="top">
+                <div class="logo">
+                    <img src="images/icon/logo.svg">
+                </div>
+                <div class="sponsor">
+                    <div class="lineTitle">
+                        <div class="line left"></div>
+                        <span>贊助夥伴</span>
+                        <div class="line right"></div>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="icon">
+                                    <img src="images/icon/ozb.png">
+                                </div>
+                                <span>歐洲杯</span>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <img src="images/icon/sjb.png">
+                                </div>
+                                <span>世界盃</span>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <img src="images/icon/fifa.png">
+                                </div>
+                                <span>國際足聯</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="selBar" :class="{'on' : chSelBar}">
+                    <ul>
+                        <li @click="chSelBar = false">登陸</li>
+                        <li @click="chSelBar = true">註冊</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container">
+                <ul class="cntSort">
+                    <!-- 登陸 -->
+                    <li :class="{'change' : chSelBar}">
+                        <div class="cntInner">
+                            <form>
+                                <div class="iptBox">
+                                    <div class="item">
+                                        <div class="itemIpt">
+                                            <input type="text" placeholder="請輸入您的帳號" v-model="signInMbr.account" required>
+                                        </div>
+                                        <p class="errorTxt">帳號錯誤</p>
+                                    </div>
+
+                                    <div class="item">
+                                        <div class="itemIpt pwd">
+                                            <input placeholder="請輸入您的密碼" :type="lookPwd.loginType" v-model="signInMbr.pwd" required>
+                                            <div class="pwdLook" :class="{'on' : lookPwd.login}" @click="onLook('login')" @mouseout="outLook('login')"></div>
+                                        </div>
+                                        <p class="errorTxt">密碼錯誤</p>
+                                    </div>
+                                </div>
+                                <div class="ckBox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <p>記住密碼</p>
+                                    </label>
+                                </div>
+                                <div class="btnBox">
+                                    <button class="btn">登陸</button>
+                                </div>
+                            </form>
+
+                            <div class="forget">
+                                <div class="lineTitle">
+                                    <div class="line left"></div>
+                                    <span>忘記密碼</span>
+                                    <div class="line right"></div>
+                                </div>
+                                <div class="btn">
+                                    <div class="icon">
+                                        <img src="images/icon/lock.svg">
+                                    </div>
+                                    <span>重設密碼</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <!-- 註冊 -->
+                    <li :class="{'change' : chSelBar}">
+                        <div class="cntInner">
+                            <form>
+                                <div class="iptBox">
+                                    <div class="item">
+                                        <div class="itemIpt">
+                                            <input type="number" placeholder="請輸入手機號碼" v-model="regdMbr.account" required>
+                                        </div>
+                                        <p class="errorTxt">您輸入的手機號有誤</p>
+                                    </div>
+
+                                    <!-- regdMbr.account.code -->
+                                    <div class="item">
+                                        <div class="itemIpt">
+                                            <input placeholder="請輸入驗證碼" type="text" pattern="[0-9]{6,6}" maxlength="6" v-model="regdMbr.code" required>
+
+                                            <div class="sendCode">發送驗證碼</div>
+                                        </div>
+                                        <p class="errorTxt">您輸入的驗證碼有誤</p>
+                                    </div>
+                                </div>
+                                <div class="ckBox">
+                                    <label>
+                                        <input type="checkbox">
+                                        <p>註冊即代表同意Owin
+                                            <span>《隐私政策》</span>、
+                                            <span>《用户协议》</span>、
+                                            <span>《条款条约》</span>、
+                                            <span>《博彩责任》</span>。</p>
+                                    </label>
+                                </div>
+                                <div class="btnBox">
+                                    <button class="btn">下一步</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="service">
+                <div class="icon">
+                    <img src="images/icon/service.svg">
+                </div>
+                <p>7 x 24 小時在線客服</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    marquee: marquee,
+                    menu: menuList,
+                    media: ft_media,
+                    wrapper: ft_wrapper,
+                    ft_menu: ft_menu,
+                    sideBar: true,
+                    // ==== 彈窗開關 ====
+                    dialog: {
+                        main: false,
+                        user: false,
+                    },
+
+
+                    // ==== 登陸會員 ====
+                    signInMbr: {
+                        account: '',
+                        pwd: '',
+                    },
+                    // ==== 註冊會員 ====
+                    regdMbr: {
+                        account: '',
+                        code: '',
+                    },
+
+                    // ==== 登陸註冊切換 ====
+                    chSelBar: false,
+
+                    // ====  顯示密碼 ====
+                    lookPwd: {
+                        login: false,
+                        loginType: 'password',
+                    },
+
+                };
+            },
+            methods: {
+                startMarquee() {
+                    // 啟動跑馬燈外掛
+                    $("#marquee").marquee({
+                        pauseOnHover: true
+                    });
+                },
+                // menu子選單移動
+                backNav(data) {
+                    let length = parseInt(data.list.length / 4)
+                    data.page = data.page == 0 ? length : data.page - 1;
+                },
+                nextNav(data) {
+                    let length = parseInt(data.list.length / 4)
+                    data.page = data.page == length ? 0 : data.page + 1;
+                },
+                moveNav(num) {
+                    return ` transform: translateX(-${num * 400}%);`
+                },
+                // 主頁面卷軸置頂
+                goTop() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                },
+
+                // 顯示密碼
+                onLook(data) {
+                    switch (data) {
+                        case "login":
+                            this.lookPwd.login = true;
+                            this.lookPwd.loginType = 'text';
+                            break;
+                    }
+                },
+                // 隱藏密碼
+                outLook(data) {
+                    switch (data) {
+                        case "login":
+                            this.lookPwd.login = false;
+                            this.lookPwd.loginType = 'password';
+                            break;
+                    }
+                },
+                // 關閉所有彈窗
+                colseDialog(){
+                    for (let i in this.dialog) {
+                        this.dialog[i] = false
+                    }
+                },
+                // 開啟註冊/登陸視窗
+                openUserLog(){
+                    this.dialog.main = true;
+                    this.dialog.user = true;
+                },
+
+            },
+            mounted() {
+                this.startMarquee();
+            },
+        }).mount("#indexBox");
+    </script>
+
+</body>
+
+</html>

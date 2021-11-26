@@ -1,0 +1,218 @@
+<!-- ==== 首頁 ==== -->
+<div id="page">
+    <div class="homeBox">
+        <!-- carousel start (輪播) -->
+        <div class="carousel">
+            <div id="full_carousel" class="swipslider">
+                <ul class="sw-slides">
+                    <template v-for="(item,index) in carousel">
+                        <li class="sw-slide">
+                            <img :src="item">
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+
+        <!-- recDiv start (為您推薦) -->
+        <div class="recDiv">
+            <div class="inner">
+                <div class="mainTitle">
+                    <div class="en">Recommend</div>
+                    <div class="ch">為您推薦</div>
+                </div>
+                <div class="recList">
+                    <ul>
+                        <template v-for="(item,index) in recList">
+                            <li>
+                                <div class="avatar">
+                                    <img :src="item.img">
+                                </div>
+                                <p>{{item.title}}</p>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+                <div class="recInfo">
+                    <div class="icon"></div>
+                    <div class="infoList" ref="infoList">
+                        <template v-for="(item,index) in recInfo">
+                            <p>中獎消息：玩家<span>{{item.player}}</span>在{{item.sort}}中獲得<span>{{item.money}}</span>盈利</p>
+                        </template>
+
+                        <p>中獎消息：玩家<span>{{recInfo[0].player}}</span>在{{recInfo[0].sort}}中獲得<span>{{recInfo[0].money}}</span>盈利</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- dlDiv start (APP下載) -->
+        <div class="dlDiv">
+            <div class="dlleft">
+                <img src="images/background/appPhone.webp">
+            </div>
+            <div class="dlRight">
+                <div class="dlTop">
+                    <div class="title">樂動體育客戶端</div>
+                    <p>業內最高賠率，不但支持千萬人同時在線，更提供最多賽事以及動畫直播/視頻直播，讓您身臨其境，享有獨特完整的投注體驗。</p>
+                </div>
+                <div class="dlBottm">
+                    <div class="qrcode">
+                        <img src="images/icon/qrCode.png">
+                    </div>
+
+                    <div class="list">
+                        <ul>
+                            <li>H5網頁版</li>
+                            <li>掃描二維碼下載，支持安卓、iOS手機版</li>
+                            <li>建議使用瀏覽器自帶掃碼工具</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- prefDiv start (優惠活動) -->
+        <div class="prefDiv">
+            <div class="inner">
+                <div class="mainTitle">
+                    <div class="en">Promotions</div>
+                    <div class="ch">優惠活動</div>
+                </div>
+                <div class="prefList">
+                    <ul>
+                        <template v-for="(item,index) in prefList">
+                            <li>
+                                <div class="picture">
+                                    <img :src="item.img">
+                                </div>
+                                <div class="msg">
+                                    <div class="top">
+                                        <div class="status">
+                                            <div>進行中</div>
+                                        </div>
+                                        <p class="title">{{item.title}}</p>
+                                        <p>參與時間：{{item.time01}}~{{item.time02}}</p>
+                                        <p>適用平台：{{item.platform}}</p>
+                                    </div>
+    
+                                    <div class="btn">
+                                        <div class="btn_s02">查看詳情</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- sponsorDiv start (贊助) -->
+        <div class="sponsorDiv">
+            <div>
+                <div class="msg">
+                    <div class="title">樂動贊助</div>
+                    <p>全球唯一四大頂級賽事贊助商，深度贊助多支頂級球隊</p>
+                </div>
+                <div class="btn">
+                    <div class="btn_s02">更多精彩贊助信息</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- featureDiv start (產品特色) -->
+        <div class="featureDiv">
+            <div class="inner">
+                <div class="mainTitle">
+                    <div class="en">Feature</div>
+                    <div class="ch">產品特色</div>
+                </div>
+                <div class="list">
+                    <ul>
+                        <template v-for="(item,index) in featureList">
+                            <li>
+                                <div class="title">
+                                    <p>{{item.title}}</p>     
+                                </div>
+                                <div class="feature">
+                                    <div class="icon">
+                                        <img :src="item.img">
+                                    </div>
+                                    <div class="msgList">
+                                        <template v-for="(i,index) in item.list">
+                                            <!-- 樣式1 -->
+                                            <div v-if="i.style == 1">
+                                                <div class="theme">{{i.theme}}</div>
+                                                <p>{{i.ann}}</p>
+                                            </div>
+                                            
+                                            <!-- 樣式2 -->
+                                            <div v-if="i.style == 2">
+                                                <p class="num"><span>{{i.num}}</span>{{i.ann}}</p>
+                                            </div>
+                                        </template>         
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                carousel: carousel,
+                recList: recList,
+                recInfo: infoList,
+                info: {
+                    timer: '',
+                    num: 0,
+                },
+                prefList: prefList,
+                featureList:featureList,
+
+            };
+        },
+        methods: {
+            // 啟動輪播外掛
+            full_carousel() {  
+                $('#full_carousel').swipeslider();
+            },
+            // 啟動輪播中獎訊息
+            startInfo() {
+                let length = parseInt(this.recInfo.length);
+                let self = this
+
+                this.info.timer = setInterval(() => {
+                    this.info.num++
+                        if (this.info.num == length) {
+                            setTimeout(function() {
+                                self.info.num = 0;
+                                self.$refs.infoList.style.transition = '0s';
+                                self.$refs.infoList.style.transform = `translateY(-${0}px)`;
+                            }, 500)
+                        } else {
+                            self.$refs.infoList.style.transition = '.5s';
+                        }
+                    this.$refs.infoList.style.transform = `translateY(-${this.info.num*18}px)`;
+                }, 2000)
+            },
+        },
+        beforeDestroy() {
+            //銷燬前清除定時器
+            clearInterval(this.info.timer);
+        },
+        mounted() {
+            this.full_carousel();
+            this.startInfo();
+        },
+    }).mount("#page");
+</script>

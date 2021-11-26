@@ -1,0 +1,10 @@
+@import "reset";
+@import "method";
+
+// === 外掛 ===
+@import "marquee";       // 跑馬燈
+@import "swipeslider";   // 輪播
+
+// === 頁面設定 ===
+@import "main";  // 主架構
+@import "page";  // 分頁

@@ -151,13 +151,13 @@ img {
 
 @media screen and (min-width: 1920px) {
   .swipslider {
-    height: 614px;
+    height: 590px;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .swipslider {
-    height: 377px;
+    height: 374px;
   }
 }
 

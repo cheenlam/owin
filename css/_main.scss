@@ -132,7 +132,7 @@ input {
         }
 
         .hd_logo {
-            width: 80px;
+            width: 100px;
             flex-shrink: 0;
             cursor: pointer;
         }
@@ -142,7 +142,6 @@ input {
             align-items: center;   
             .hd_link{
                 margin-right: 50px;
-                
                 ul{
                     display: flex;
                 }

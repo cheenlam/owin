@@ -470,7 +470,7 @@ input {
 }
 
 .hd_top .hd_logo {
-  width: 80px;
+  width: 100px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   cursor: pointer;
@@ -1971,7 +1971,7 @@ input {
       -ms-flex-direction: column;
           flex-direction: column;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
 }
 
 .homeBox .featureDiv .list li + li {
@@ -1979,7 +1979,7 @@ input {
 }
 
 .homeBox .featureDiv .list .title {
-  height: 64px;
+  height: 81px;
   color: #fff;
   font-size: 20px;
   font-weight: 700;

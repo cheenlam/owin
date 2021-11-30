@@ -96,6 +96,21 @@ input {
     }
 }
 
+.btn_s03 {
+    border-radius: 4px;
+    color: #fff;
+    background: linear-gradient(45deg, #fe356a 15%, #ff6b92 89%);
+    box-shadow: 0 2px 8px 0 #a80530;
+    user-select: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    left: 0.5px;
+    &:active {
+        background: linear-gradient(45deg, #ff6b92 15%, #fe356a 89%);
+        transform: 0.3s;
+    }
+}
+
 // 共用內框樣式
 .inner {
     max-width: 1200px;
@@ -110,37 +125,66 @@ input {
         color: #999;
         background: linear-gradient(to right, #030303, #393939);
         .inner {
-            height: 50px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .helpLink {
+        .hd_logo {
+            width: 80px;
             flex-shrink: 0;
             cursor: pointer;
         }
 
-        .marquee {
-            width: 100%;
-            height: 100%;
-            max-width: 500px;
-            margin: 0 25px;
-            color: #999;
+        .hdTool{
             display: flex;
-            align-items: center;
-
-            .icon {
-                width: 18px;
-                margin-right: 10px;
+            align-items: center;   
+            .hd_link{
+                margin-right: 50px;
+                
+                ul{
+                    display: flex;
+                }
+                li{
+                    padding-top: 12px;
+                    cursor: pointer;
+                    position: relative;
+                    color: #fff;
+                    transition: .5s;
+                    @include hover{
+                        &:hover{
+                            color: #ff0;
+                        }
+                    }
+                    &::before{
+                        content: '';
+                        width: 30px;
+                        height: 18px;
+                        background: no-repeat center /cover;
+                        position: absolute;
+                        top: -3px;
+                        left: 0;
+                    }
+                    &.hot::before{
+                        background-image: url(../images/icon/tag_hot.png);
+                    }
+                    &.live::before{
+                        background-image: url(../images/icon/tag_live.png);
+                    }
+                }
+                li+li{
+                    margin-left: 30px;
+                }
             }
-        }
 
-        .hd_login {
-            flex-shrink: 0;
-            display: flex;
-            .btn + .btn {
-                margin-left: 10px;
+            .hd_login {
+                height: 25px;
+                flex-shrink: 0;
+                display: flex;
+                .btn + .btn {
+                    margin-left: 10px;
+                }
             }
         }
     }

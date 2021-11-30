@@ -23,28 +23,28 @@
         <div class="header">
             <div class="hd_top">
                 <div class="inner">
-                    <div class="helpLink">幫助中心</div>
+                    <div class="hd_logo">
+                        <img src="images/icon/logo.svg">
+                    </div>
 
-                    <!-- 跑馬燈 -->
-                    <div class="marquee">
-                        <div class="icon">
-                            <img src="images/icon/horn.svg">
+                    <div class="hdTool">
+                        <div class="hd_link">
+                            <ul>
+                                <li>優惠活動</li>
+                                <li class="hot">APP下載</li>
+                                <li class="live">熱門直播</li>
+                            </ul>
                         </div>
-                        <ul id="marquee" class="marquee_body">
-                            <template v-for="(item,index) in marquee">
-                                <li>{{item}}</li>
-                            </template>
-                        </ul>
-                    </div>
 
-                    <div class="hd_login">
-                        <div class="btn_s01 btn" @click="openUserLog(),chSelBar = true">註冊</div>
-                        <div class="btn_s01 btn" @click="openUserLog(),chSelBar = false">登陸</div>
-                    </div>
+                        <div class="hd_login">
+                            <div class="btn_s01 btn" @click="openUserLog(),chSelBar = true">註冊</div>
+                            <div class="btn_s01 btn" @click="openUserLog(),chSelBar = false">登陸</div>
+                        </div>
+                    </div>      
                 </div>
             </div>
 
-            <div class="hd_bottom">
+            <div class="hd_bottom" v-if="false">
                 <div class="inner">
                     <div class="logo">
                         <img src="images/icon/logo_b.svg">
@@ -354,7 +354,6 @@
         Vue.createApp({
             data() {
                 return {
-                    marquee: marquee,
                     menu: menuList,
                     media: ft_media,
                     wrapper: ft_wrapper,
@@ -390,12 +389,6 @@
                 };
             },
             methods: {
-                startMarquee() {
-                    // 啟動跑馬燈外掛
-                    $("#marquee").marquee({
-                        pauseOnHover: true
-                    });
-                },
                 // menu子選單移動
                 backNav(data) {
                     let length = parseInt(data.list.length / 4)
@@ -435,20 +428,20 @@
                     }
                 },
                 // 關閉所有彈窗
-                colseDialog(){
+                colseDialog() {
                     for (let i in this.dialog) {
                         this.dialog[i] = false
                     }
                 },
                 // 開啟註冊/登陸視窗
-                openUserLog(){
+                openUserLog() {
                     this.dialog.main = true;
                     this.dialog.user = true;
                 },
 
             },
             mounted() {
-                this.startMarquee();
+                
             },
         }).mount("#indexBox");
     </script>

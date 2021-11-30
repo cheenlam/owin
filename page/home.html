@@ -14,6 +14,20 @@
             </div>
         </div>
 
+        <!-- 跑馬燈 -->
+        <div class="marquee">
+            <div class="marquee_inner">
+                <div class="icon">
+                    <img src="images/icon/horn.svg">
+                </div>
+                <ul id="marquee" class="marquee_body">
+                    <template v-for="(item,index) in marquee">
+                        <li>{{item}}</li>
+                    </template>
+                </ul>
+            </div> 
+        </div>
+
         <!-- recDiv start (為您推薦) -->
         <div class="recDiv">
             <div class="inner">
@@ -50,23 +64,25 @@
         <!-- dlDiv start (APP下載) -->
         <div class="dlDiv">
             <div class="dlleft">
-                <img src="images/background/appPhone.webp">
+                <img src="images/background/appPhone.png">
             </div>
             <div class="dlRight">
                 <div class="dlTop">
-                    <div class="title">樂動體育客戶端</div>
-                    <p>業內最高賠率，不但支持千萬人同時在線，更提供最多賽事以及動畫直播/視頻直播，讓您身臨其境，享有獨特完整的投注體驗。</p>
+                    <div class="title">Owin體育客戶端</div>
+                    <p>多款遊戲、輕鬆享樂，用手機版也能輕鬆玩，現在就下載！</p>
+                    <p>业内最高赔率，不但支持千万人同时在线，更提供最多赛事以及动画直播/视频直播，让您身临其境，享有独特完整的投注体验。</p>
                 </div>
                 <div class="dlBottm">
+                   
                     <div class="qrcode">
                         <img src="images/icon/qrCode.png">
                     </div>
 
                     <div class="list">
                         <ul>
-                            <li>H5網頁版</li>
-                            <li>掃描二維碼下載，支持安卓、iOS手機版</li>
-                            <li>建議使用瀏覽器自帶掃碼工具</li>
+                            <li>H5网页版 https://owin.cc</li>
+                            <li>扫描二维码下载，支持安卓、ios手机版。</li>
+                            <li>建议使用浏览器自带扫描工具。</li>
                         </ul>
                     </div>
                 </div>
@@ -113,11 +129,11 @@
         <div class="sponsorDiv">
             <div>
                 <div class="msg">
-                    <div class="title">樂動贊助</div>
+                    <div class="title">Owin贊助</div>
                     <p>全球唯一四大頂級賽事贊助商，深度贊助多支頂級球隊</p>
                 </div>
                 <div class="btn">
-                    <div class="btn_s02">更多精彩贊助信息</div>
+                    <div class="btn_s03">更多精彩贊助信息</div>
                 </div>
             </div>
         </div>
@@ -152,23 +168,24 @@
                                             <div v-if="i.style == 2">
                                                 <p class="num"><span>{{i.num}}</span>{{i.ann}}</p>
                                             </div>
-                                        </template>         
+                                        </template>
                                     </div>
-                                </div>
+                                </div>   
                             </li>
                         </template>
                     </ul>
                 </div>
-            </div>
-        </div>
-
     </div>
+</div>
+
+</div>
 </div>
 
 <script>
     Vue.createApp({
         data() {
             return {
+                marquee: marquee,
                 carousel: carousel,
                 recList: recList,
                 recInfo: infoList,
@@ -177,14 +194,20 @@
                     num: 0,
                 },
                 prefList: prefList,
-                featureList:featureList,
+                featureList: featureList,
 
             };
         },
         methods: {
             // 啟動輪播外掛
-            full_carousel() {  
+            full_carousel() {
                 $('#full_carousel').swipeslider();
+            },
+            startMarquee() {
+                // 啟動跑馬燈外掛
+                $("#marquee").marquee({
+                    pauseOnHover: true
+                });
             },
             // 啟動輪播中獎訊息
             startInfo() {
@@ -213,6 +236,7 @@
         mounted() {
             this.full_carousel();
             this.startInfo();
+            this.startMarquee();
         },
     }).mount("#page");
 </script>

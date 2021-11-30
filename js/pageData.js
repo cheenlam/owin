@@ -145,18 +145,16 @@ let ft_menu = ['關於我們', '幫助中心', '博彩責任', '規則與條款'
 // ============================
 // 首頁 - 輪播
 let carousel = [
-    'images/banner/banner_01.png',
-    'images/banner/banner_02.png',
-    'images/banner/banner_03.png'
+    'images/banner/banner_01.jpg',
+    'images/banner/banner_02.jpg',
 ]
 
 //首頁 - 為您推薦
 let recList = [
-    { img: 'images/menuLIst/sport_01.webp', title: '新樂動體育' },
-    { img: 'images/menuLIst/person_01.webp', title: '性感真人' },
-    { img: 'images/menuLIst/sport_02.webp', title: '新樂金體育' },
-    { img: 'images/menuLIst/person_02.webp', title: 'AG真人' },
-    { img: 'images/menuLIst/esports_01.webp', title: '樂動電競' },
+    { img: 'images/recommend/01.png', title: '沙巴體育' },
+    { img: 'images/recommend/02.png', title: 'IM體育' },
+    { img: 'images/recommend/03.png', title: '必發體育' },
+    { img: 'images/recommend/04.png', title: '熱門直播' },
 ]
 
 // 首頁 - 中獎消息
@@ -171,16 +169,16 @@ let infoList = [
 
 // 首頁 - 優惠活動
 let prefList = [{
-        img: 'images/background/pref_01.webp',
-        title: '樂動升級贊助豪門意甲',
+        img: 'images/background/pref_01.png',
+        title: 'Owin升級贊助豪門意甲',
         time01: '2021.10.15',
         time02: '2022.01.06',
         platform: '體育平台'
     },
 
     {
-        img: 'images/background/pref_02.webp',
-        title: '樂動助力五大聯賽',
+        img: 'images/background/pref_02.png',
+        title: 'Owin助力五大聯賽',
         time01: '2021.08.05',
         time02: '2021.12.22',
         platform: '體育平台'
@@ -190,7 +188,7 @@ let prefList = [{
 // 首頁 - 產品特色
 let featureList = [{
         title: '極致用戶體驗',
-        img: 'images/icon/round_love.webp',
+        img: 'images/icon/icon_Diamond.svg',
         list: [{
                 theme: '客制多平台應用',
                 ann: 'Web、H5、Android/iOS APP',
@@ -213,7 +211,7 @@ let featureList = [{
     },
     {
         title: '高效快捷交易',
-        img: 'images/icon/round_pay.webp',
+        img: 'images/icon/icon_Safety.svg',
         list: [{
                 theme: '',
                 ann: '極速存款',
@@ -236,7 +234,7 @@ let featureList = [{
     },
     {
         title: '穩固安全保障',
-        img: 'images/icon/round_lock.webp',
+        img: 'images/icon/icon_trade.svg',
         list: [{
                 theme: '128位SSL加密',
                 ann: '數據/賬戶防衛嚴密',

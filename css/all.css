@@ -139,7 +139,7 @@ img {
   width: 100%;
   max-width: 1920px;
   margin: auto;
-  height: calc(100vw * 0.31);
+  height: calc(100vw * 0.29);
   position: relative;
   overflow: hidden;
   display: block;
@@ -457,7 +457,7 @@ input {
 }
 
 .hd_top .inner {
-  height: 55px;
+  height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -512,12 +512,14 @@ input {
 
 .hd_top .hdTool .hd_link li::before {
   content: '';
-  width: 30px;
-  height: 18px;
+  width: 46px;
+  height: 27px;
   background: no-repeat center /cover;
   position: absolute;
-  top: -3px;
+  top: -11px;
   left: 0;
+  -webkit-animation: flashing 1s infinite;
+          animation: flashing 1s infinite;
 }
 
 .hd_top .hdTool .hd_link li.hot::before {
@@ -539,6 +541,10 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.hd_top .hdTool .hd_login .btn {
+  font-size: 0.85rem;
 }
 
 .hd_top .hdTool .hd_login .btn + .btn {
@@ -1590,6 +1596,24 @@ input {
   margin-right: 5px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+
+@-webkit-keyframes flashing {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes flashing {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
 }
 
 .homeBox .marquee {

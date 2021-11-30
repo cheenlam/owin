@@ -125,7 +125,7 @@ input {
         color: #999;
         background: linear-gradient(to right, #030303, #393939);
         .inner {
-            height: 55px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -159,12 +159,13 @@ input {
                     }
                     &::before{
                         content: '';
-                        width: 30px;
-                        height: 18px;
+                        width: 46px;
+                        height: 27px;
                         background: no-repeat center /cover;
                         position: absolute;
-                        top: -3px;
+                        top: -11px;
                         left: 0;
+                        animation: flashing 1s infinite;
                     }
                     &.hot::before{
                         background-image: url(../images/icon/tag_hot.png);
@@ -182,6 +183,10 @@ input {
                 height: 25px;
                 flex-shrink: 0;
                 display: flex;
+                .btn{
+                    font-size: 0.85rem;
+                }
+              
                 .btn + .btn {
                     margin-left: 10px;
                 }
@@ -973,4 +978,9 @@ input {
             }
         }
     }
+}
+
+@keyframes flashing{
+    0%,100%{opacity: 1;}
+    50%{opacity: 0.2;}
 }
